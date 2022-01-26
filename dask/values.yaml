@@ -147,6 +147,14 @@ additional_worker_groups: [] # Additional groups of workers to create. List of g
 #       memory: 32G
 # ...
 # (Defaults will be taken from the primary worker configuration)
+- name: gpu-workers  # Dask worker group name.
+    replicas: 1
+    extraArgs:
+      - --resources
+      - "GPU=1"
+    resources:
+      limits:
+        nvidia.com/gpu: 1
 
 jupyter:
   name: jupyter # Jupyter name.
